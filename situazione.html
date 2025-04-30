@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutela Digitale</title>
+  <style>
+    :root {
+      --main-color: #1e90ff;
+      --accent-color: #ffcc00;
+      --bg-color: #f0f0f0;
+      --text-color: #222;
+      --card-hover: scale(1.05);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg-color);
+      overflow-x: hidden;
+    }
+
+    header, section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: var(--main-color);
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: var(--text-color);
+    }
+
+    .scroll-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: none;
+      background: var(--accent-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      font-size: 2rem;
+      cursor: pointer;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .card {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: var(--card-hover);
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-rows: 2fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
+      height: 100vh;
+      width: 100vw;
+      text-align: center;
+    }
+
+    .col {
+      padding: 2rem;
+      color: white;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .high-protection {
+      background: #2ecc71;
+    }
+
+    .medium-protection {
+      background: #f1c40f;
+    }
+
+    .low-protection {
+      background: #e74c3c;
+    }
+
+    .full-row {
+      grid-column: 1 / 4;
+      background: #34495e;
+      padding: 2rem;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    .menu {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: url('mondo-stilizzato.png') center/cover;
+      cursor: pointer;
+      transition: transform 0.5s;
+    }
+
+    .menu.open {
+      transform: rotate(180deg);
+    }
+
+    .menu-items {
+      display: none;
+      position: absolute;
+      top: 100px;
+      right: 20px;
+      background: white;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .menu.open + .menu-items {
+      display: block;
+    }
+
+    .menu-items a {
+      display: block;
+      margin: 10px 0;
+      text-decoration: none;
+      color: var(--text-color);
+    }
+
+    .columns-container {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+    }
+
+    .three-columns {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      margin-top: 2rem;
+    }
+
+    .column {
+      flex: 1;
+      margin: 0 1rem;
+      padding: 1rem;
+      border-radius: 12px;
+      color: white;
+      text-align: left;
+    }
+
+    .high {
+      background: #2ecc71;
+    }
+
+    .medium {
+      background: #f1c40f;
+    }
+
+    .low {
+      background: #e74c3c;
+    }
+
+    .data-section {
+      margin-top: 2rem;
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="menu" onclick="toggleMenu()"></div>
+  <div class="menu-items">
+    <a href="index.html">Home</a>
+    <a href="significato.html">Essere Tutelati</a>
+    <a href="situazione.html">Situazione Globale</a>
+    <a href="azioni.html">Azioni Possibili</a>
+    <a href="riflessione.html">Riflessione Finale</a>
+  </div>
+
+  
+  <section id="significato">
+    <h1>La situazione globale</h1>
+    <h2>Dividiamo il globo in 3 categorie</h2>
+    <button class="scroll-btn" onclick="scrollToSection('grid')">↓</button>
+  </section>
+
+  <div class="menu" onclick="toggleMenu()"></div>
+  <div class="menu-items">
+    <a href="index.html">Home</a>
+    <a href="significato.html">Essere Tutelati</a>
+    <a href="situazione.html">Situazione Globale</a>
+    <a href="azioni.html">Azioni Possibili</a>
+    <a href="riflessione.html">Riflessione Finale</a>
+  </div>
+
+  <div class="grid-container" id="grid">
+    <div class="col high-protection">
+      Paesi con leggi avanzate per la tutela da internet <br><br> 35%
+    </div>
+    <div class="col medium-protection">
+      Paesi in cui le leggi per la tutela di internet non sono all'avanguardia <br> 45%
+    </div>
+    <div class="col low-protection">
+      Paesi in cui non è ancora presente una legislazione per tutelare i singoli utenti <br> 20%
+    </div>
+    <div class="full-row">
+      Statistiche globali: solo il 40% degli stati ha una legislazione completa sulla protezione dei dati. Disuguaglianze marcate tra regioni.
+    </div>
+  </div>
+ 
+
+
+  <section id="situazione">
+ 
+    <h2>Comparazione tra paesi</h2>
+    <div class="columns-container">
+      <div class="three-columns">
+        <div class="column high">
+          <h3>Paesi molto tutelanti</h3>
+          <p>Questi paesi hanno regolamenti avanzati sulla protezione dei dati personali (es. GDPR in Europa), sistemi di monitoraggio trasparenti e diritti digitali garantiti.</p>
+        </div>
+        <div class="column medium">
+          <h3>Paesi parzialmente tutelanti</h3>
+          <p>Hanno iniziative di protezione ma mancano strumenti concreti o l'applicazione è frammentaria. Spesso le leggi non tengono il passo con l’evoluzione tecnologica.</p>
+        </div>
+        <div class="column low">
+          <h3>Paesi con poca o nessuna tutela</h3>
+          <p>In questi paesi la sorveglianza è elevata o le leggi sono assenti. I cittadini non hanno mezzi efficaci per proteggere la propria identità digitale.</p>
+        </div>
+      </div>
+      <div class="data-section">
+        <h3>Dati e Statistiche</h3>
+        <p>➤ Solo il 43% dei paesi ha una legge organica sulla privacy.<br>
+        ➤ Oltre 3 miliardi di persone vivono in paesi con sorveglianza elevata.<br>
+        ➤ L’Europa guida la classifica globale per trasparenza e tutela.</p>
+      </div>
+    </div>
+   <section> <button class="scroll-btn" onclick="scrollToSection('sezioni')">↓</button> </section>
+  </section>
+
+
+  <section id="sezioni">
+    <div class="grid">
+      <div class="card" onclick="location.href='index.html'">home</div>
+      <div class="card" onclick="location.href='significato.html'">Cosa significa essere tutelati</div>
+      <div class="card" onclick="location.href='azioni.html'">Azioni possibili</div>
+      <div class="card" onclick="location.href='riflessione.html'">Riflessione finale</div>
+    </div>
+  </section>
+
+
+
+  <section id="azioni">
+    <h1>Azioni possibili</h1>
+    <h2>Cittadini e Stati: due percorsi, una responsabilità</h2>
+    <button class="scroll-btn" onclick="scrollToSection('riflessione')">↓</button>
+  </section>
+
+  <section id="riflessione">
+    <h1>Riflessione finale</h1>
+    <h2>Una visione interdisciplinare sulla tutela digitale</h2>
+  </section>
+
+  <script>
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      menu.classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>
