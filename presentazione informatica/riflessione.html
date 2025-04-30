@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutela Digitale</title>
+  <style>
+    .fixed-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1; /* Dietro ai contenuti */
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 2rem;
+      color: rgb(0, 0, 0);
+    }
+    :root {
+      --main-color: #1e90ff;
+      --accent-color: #ffcc00;
+      --bg-color: #f0f0f0;
+      --text-color: #222;
+      --card-hover: scale(1.05);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg-color);
+      overflow-x: hidden;
+    }
+
+    header, section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: var(--main-color);
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: var(--text-color);
+    }
+
+    .scroll-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: none;
+      background: var(--accent-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      font-size: 2rem;
+      cursor: pointer;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .card {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: var(--card-hover);
+    }
+
+    .menu {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: url('mondo-stilizzato.png') center/cover;
+      cursor: pointer;
+      transition: transform 0.5s;
+    }
+
+    .menu.open {
+      transform: rotate(180deg);
+    }
+
+    .menu-items {
+      display: none;
+      position: absolute;
+      top: 100px;
+      right: 20px;
+      background: white;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .menu.open + .menu-items {
+      display: block;
+    }
+
+    .menu-items a {
+      display: block;
+      margin: 10px 0;
+      text-decoration: none;
+      color: var(--text-color);
+    }
+
+    .columns-container {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+    }
+
+    .three-columns {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      margin-top: 2rem;
+    }
+
+    .column {
+      flex: 1;
+      margin: 0 1rem;
+      padding: 1rem;
+      border-radius: 12px;
+      color: white;
+      text-align: left;
+    }
+
+    .high {
+      background: #2ecc71;
+    }
+
+    .medium {
+      background: #f1c40f;
+    }
+
+    .low {
+      background: #e74c3c;
+    }
+
+    .data-section {
+      margin-top: 2rem;
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .card img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+    }
+
+    .card.active {
+      transform: translate(-50%, -50%) scale(1.3);
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      z-index: 1002;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      z-index: 1000;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
+
+  </style>
+</head>
+<body>
+  <img class="fixed-image" src="C:\Users\k\Desktop\presentazione informatica\img\sfondo3.png" alt="Immagine fissa">
+  <div class="menu" onclick="toggleMenu()"></div>
+  <div class="menu-items">
+    <a href="index.html">Home</a>
+    <a href="significato.html">Essere Tutelati</a>
+    <a href="situazione.html">Situazione Globale</a>
+    <a href="azioni.html">Azioni Possibili</a>
+    <a href="riflessione.html">Riflessione Finale</a>
+  </div>
+
+  
+ 
+  <section id="riflessione">
+    <h1>Riflessione finale</h1>
+    <h2>Una visione interdisciplinare sulla tutela digitale</h2>
+    <button class="scroll-btn" onclick="scrollToSection('text')">↓</button>
+  </section>
+
+  <section id="text" class="content">
+    <p>
+      Vivere in un mondo sempre più connesso significa anche confrontarsi ogni giorno con sfide nuove. 
+      La tutela digitale non è solo una questione tecnica, ma anche etica, sociale e culturale. È fondamentale che cittadini e stati collaborino per garantire uno spazio online più sicuro, 
+      rispettoso dei diritti e inclusivo. La consapevolezza è il primo passo verso il cambiamento.
+    </p>
+    <button class="scroll-btn" onclick="scrollToSection('cards')">↓</button>
+  </section>
+
+  <section class="cards" id="cards">
+    
+    <div class="card" onclick="activateCard(this)">
+      <img src="diritto.png" alt="Icona Diritto">
+      <h3>Diritto</h3>
+      <p>Analisi delle normative e diritti digitali dei cittadini.</p>
+    </div>
+    <div class="card" onclick="activateCard(this)">
+      <img src="educazione.png" alt="Icona Educazione Civica">
+      <h3>Educazione Civica</h3>
+      <p>Il ruolo della scuola nella formazione al digitale consapevole.</p>
+    </div>
+    <div class="card" onclick="activateCard(this)">
+      <img src="tecnologia.png" alt="Icona Tecnologia">
+      <h3>Tecnologia</h3>
+      <p>L'evoluzione degli strumenti per la sicurezza online.</p>
+    </div>
+    <div class="card" onclick="activateCard(this)">
+      <img src="filosofia.png" alt="Icona Filosofia">
+      <h3>Filosofia</h3>
+      <p>Etica e libertà nella società digitale contemporanea.</p>
+    </div>
+    <div class="card" onclick="deactivateCard()">
+      <img src="chiudi.png" alt="Icona Chiudi">
+      <h3>Chiudi</h3>
+      <p>Disattiva la card attiva.</p>
+    </div>
+ 
+    <section><button class="scroll-btn" onclick="scrollToSection('sezioni')">↓</button></section>
+  </section>
+   
+
+
+  <section id="sezioni">
+    <div class="grid">
+      <div class="card" onclick="location.href='index.html'">home</div>
+      <div class="card" onclick="location.href='situazione.html'">La situazione globale</div>
+      <div class="card" onclick="location.href='azioni.html'">Azioni possibili</div>
+      <div class="card" onclick="location.href='significato.html'">Cosa significa essere tutelati</div>
+    </div>
+  </section>
+
+
+
+
+
+  <script>
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      menu.classList.toggle('open');
+    }
+
+    function activateCard(card) {
+      const isActive = card.classList.contains('active');
+      document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+      document.getElementById('overlay').classList.remove('active');
+      if (!isActive && card.querySelector('h3').textContent !== 'Chiudi') {
+        card.classList.add('active');
+        document.getElementById('overlay').classList.add('active');
+      }
+    }
+
+    function deactivateCard() {
+      document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+      document.getElementById('overlay').classList.remove('active');
+    }
+  </script>
+
+</body>
+</html>
