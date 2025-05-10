@@ -177,16 +177,60 @@
       text-align: left;
     }
 
-    .high {
-      background: #2ecc71;
+.bloccore {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      width: 100%;
+      max-width: 800px;
     }
 
-    .medium {
-      background: #f1c40f;
+    .riquadro-stellare {
+      background: #007acc;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      position: relative;
+      font-weight: bold;
+      transition: background 0.3s;
     }
 
-    .low {
-      background: #e74c3c;
+    .riquadro-stellare:hover {
+      background: #005f99;
+    }
+
+    .riquadro-nascosto {
+      background: #ffffff;
+      border: 2px solid #007acc;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      position: absolute;
+      top: 0;
+      opacity: 0;
+      transform: translateX(0);
+      transition: all 0.5s ease;
+      z-index: 10;
+    }
+
+    .mostra-sinistra {
+      left: -320px;
+      transform: translateX(50px);
+    }
+
+    .mostra-destra {
+      right: -320px;
+      transform: translateX(-50px);
+    }
+
+    .riquadro-nascosto.attivo {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .contenitore-cosmico {
+      position: relative;
     }
 
     .data-section {
@@ -221,6 +265,23 @@
 
   <section id="problemi" class="content">
     <h1>Principali minacce digitali:</h1>
+     <div class="bloccore">
+
+    <div class="contenitore-cosmico">
+      <div class="riquadro-stellare" onclick="toggleRiquadro('info1')">Clicca qui - Info 1</div>
+      <div id="info1" class="riquadro-nascosto mostra-destra">
+        Questo è il contenuto che appare a destra.
+      </div>
+    </div>
+
+    <div class="contenitore-cosmico">
+      <div class="riquadro-stellare" onclick="toggleRiquadro('info2')">Clicca qui - Info 2</div>
+      <div id="info2" class="riquadro-nascosto mostra-sinistra">
+        Questo è il contenuto che appare a sinistra.
+      </div>
+    </div>
+
+  </div>
     <ul>
       <strong>Furto di identità - </strong> </li>
       <strong>Phishing</strong> </li><br>
@@ -257,6 +318,12 @@
       const menu = document.querySelector('.menu');
       menu.classList.toggle('open');
     }
+
+    function toggleRiquadro(id) {
+      const box = document.getElementById(id);
+      box.classList.toggle("attivo");
+    }
+    
   </script>
 
 </body>
