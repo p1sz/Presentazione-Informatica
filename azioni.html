@@ -163,30 +163,6 @@
       max-width: 1000px;
       margin-left: auto;
       margin-right: auto;
-
-  .img-container {
-      display: flex;
-      justify-content: center;
-      gap: 20px; /* spazio tra le immagini */
-      flex-wrap: wrap; /* va a capo se lo schermo è stretto */
-      margin-top: 50px;
-    }
-    .img-container img {
-      max-width: 100%;
-      width: 100%;
-      height: auto;
-      max-height: 300px;
-      object-fit: contain;
-      background-color: white;
-      padding: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    .img-box {
-      flex: 1 1 300px; /* min larghezza 300px */
-      max-width: 500px;
-    }
-
-      
     }
   </style>
 </head>
@@ -209,18 +185,20 @@
   </section>
 
 
-<div class="img-container">
-    <div class="img-box">
+<table id="tab">
+  <tr>
+    <td>
       <a href="azioni-cittadini.html">
         <img src="img/cittadini.jpg" alt="Azioni dei cittadini">
       </a>
-    </div>
-    <div class="img-box">
+    </td>
+    <td>
       <a href="azioni-stati.html">
         <img src="img/governo.png" alt="Azioni degli stati">
       </a>
-    </div>
-  </div>
+    </td>
+  </tr>
+</table>
 
   </section>
 
