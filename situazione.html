@@ -79,6 +79,20 @@ body {
       grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
       padding: 2rem;
+      width: 500px;
+    }
+
+    .card {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: var(--card-hover);
     }
 
     .menu {
