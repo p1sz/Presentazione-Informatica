@@ -339,6 +339,21 @@
       const box = document.getElementById(id);
       box.classList.toggle("attivo");
     }
+
+    document.querySelectorAll('.contenitore-cosmico').forEach(contenitore => {
+    const trigger = contenitore.querySelector('.riquadro-stellare');
+    const panel = contenitore.querySelector('.riquadro-nascosto');
+
+    trigger.addEventListener('click', () => {
+      // Chiudi tutti gli altri pannelli
+      document.querySelectorAll('.riquadro-nascosto').forEach(p => {
+        if (p !== panel) p.classList.remove('attivo');
+      });
+
+      // Attiva/disattiva solo il pannello relativo
+      panel.classList.toggle('attivo');
+    });
+  });
     
   </script>
 
