@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tutela Digitale</title>
   <style>
+
+
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 2rem;
+      color: rgb(0, 0, 0);
+    }
+
     :root {
       --main-color: #1e90ff;
       --accent-color: #ffcc00;
@@ -13,19 +22,24 @@
       --card-hover: scale(1.05);
     }
 
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: var(--bg-color);
-      overflow-x: hidden;
-    }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg-color);
+  overflow-x: hidden;
+  height: 100%;
+}
 
     header, section {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      height: 100%;
       text-align: center;
       padding: 2rem;
     }
@@ -67,61 +81,7 @@
       padding: 2rem;
     }
 
-    .card {
-      background: white;
-      padding: 2rem;
-      border-radius: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
-
-    .card:hover {
-      transform: var(--card-hover);
-    }
-
-    .grid-container {
-      display: grid;
-      grid-template-rows: 2fr 1fr;
-      grid-template-columns: repeat(3, 1fr);
-      height: 100vh;
-      width: 100vw;
-      text-align: center;
-    }
-
-    .col {
-      padding: 2rem;
-      color: white;
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .high-protection {
-      background: #2ecc71;
-    }
-
-    .medium-protection {
-      background: #f1c40f;
-    }
-
-    .low-protection {
-      background: #e74c3c;
-    }
-
-    .full-row {
-      grid-column: 1 / 4;
-      background: #34495e;
-      padding: 2rem;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-
-     .menu {
+    .menu {
       position: fixed;
       top: 20px;
       right: 20px;
@@ -160,8 +120,47 @@
       text-decoration: none;
       color: var(--text-color);
     }
-    
-    .columns-container {
+
+      .grid-container {
+      display: grid;
+      grid-template-rows: 2fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
+      height: 100vh;
+      width: 100vw;
+      text-align: center;
+    }
+
+    .col {
+      padding: 2rem;
+      color: white;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .high-protection {
+      background: #2ecc71;
+    }
+
+    .medium-protection {
+      background: #f1c40f;
+    }
+
+    .low-protection {
+      background: #e74c3c;
+    }
+
+    .full-row {
+      grid-column: 1 / 4;
+      background: #34495e;
+      padding: 2rem;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+ .columns-container {
       display: flex;
       flex-direction: column;
       align-items: stretch;
@@ -206,10 +205,12 @@
       margin-left: auto;
       margin-right: auto;
     }
+
+    
   </style>
 </head>
 <body>
-
+  <img class="fixed-image" src="img\sfondo.png" alt="Immagine fissa">
   <div class="menu" onclick="toggleMenu()"></div>
   <div class="menu-items">
     <a href="index.html">Home</a>
@@ -219,21 +220,12 @@
     <a href="riflessione.html">Riflessione Finale</a>
   </div>
 
-  
-  <section id="significato">
+    <section id="significato">
     <h1>La situazione globale</h1>
     <h2>Dividiamo il globo in 3 categorie</h2>
     <button class="scroll-btn" onclick="scrollToSection('grid')">↓</button>
   </section>
 
-  <div class="menu" onclick="toggleMenu()"></div>
-  <div class="menu-items">
-    <a href="index.html">Home</a>
-    <a href="significato.html">Essere Tutelati</a>
-    <a href="situazione.html">Situazione Globale</a>
-    <a href="azioni.html">Azioni Possibili</a>
-    <a href="riflessione.html">Riflessione Finale</a>
-  </div>
 
   <div class="grid-container" id="grid">
     <div class="col high-protection">
@@ -290,18 +282,6 @@
     </div>
   </section>
 
-
-
-  <section id="azioni">
-    <h1>Azioni possibili</h1>
-    <h2>Cittadini e Stati: due percorsi, una responsabilità</h2>
-    <button class="scroll-btn" onclick="scrollToSection('riflessione')">↓</button>
-  </section>
-
-  <section id="riflessione">
-    <h1>Riflessione finale</h1>
-    <h2>Una visione interdisciplinare sulla tutela digitale</h2>
-  </section>
 
   <script>
     function scrollToSection(id) {
